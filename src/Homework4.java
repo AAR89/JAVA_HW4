@@ -18,16 +18,15 @@ public class Homework4 {
                 "     * num");
         ArrayList<String> list = new ArrayList<>();
         menu(list);
-//        System.out.println(list);
-
     }
 
     public static void menu(List<String> source) {
         List<String> stringList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         System.out.println("Input text in format 'text~num': ");
-        while (true) {
+        while (true){
             String s = sc.nextLine();
+            System.out.println(s);
             try {
                 String[] split = s.split("~");
                 Integer.parseInt(split[1]);
@@ -35,6 +34,7 @@ public class Homework4 {
                 stringList.add(split[0]);
                 stringList.add(split[1]);
                 System.out.println(stringList);
+                System.out.println(stringList.get(1));
                 menu(source);
             } catch (Exception e) {
                 System.out.println("Wrong command");
