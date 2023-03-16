@@ -4,42 +4,52 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Homework4 {
+//        "* Реализовать консольное приложение, которое:"
+//                "     * 1. Принимает от пользователя строку вида text~num"
+//                "     * 1. Нужно рассплитить строку по ~, сохранить text в связный список на позицию num.\"
+//                "     * 2. Если введено print~num, выводит строку из позиции num в связном списке."
+//                "     * 3. Если введено exit, завершаем программу"
+//                "     * Пример:"
+//                "     * string~4"
+//                "     * num~3"
+//                "     * print~3"
+//                "     * num");
 
     public static void main(String[] args) {
-        System.out.println("* Реализовать консольное приложение, которое:\n" +
-                "     * 1. Принимает от пользователя строку вида text~num\n" +
-                "     * 1. Нужно рассплитить строку по ~, сохранить text в связный список на позицию num.\n" +
-                "     * 2. Если введено print~num, выводит строку из позиции num в связном списке.\n" +
-                "     * 3. Если введено exit, завершаем программу\n" +
-                "     * Пример:\n" +
-                "     * string~4\n" +
-                "     * num~3\n" +
-                "     * print~3\n" +
-                "     * num");
-        ArrayList<String> list = new ArrayList<>();
-        menu(list);
+        ArrayList<String> resultList = new ArrayList<>();
+        menu(resultList);
     }
-
     public static void menu(List<String> source) {
-        List<String> stringList = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Input text in format 'text~num': ");
-        while (true){
-            String s = sc.nextLine();
-            System.out.println(s);
+        System.out.println("1.Input text in format 'text~num'. \n" +
+                "2.Input 'print~(num)' for output to console. \n" +
+                "3.Input 'exit' to stop the program.");
+        while (true) {
+            String text = sc.nextLine();
             try {
-                String[] split = s.split("~");
+                if (text.equals("exit")) {
+                    break;
+                }
+                String[] split = text.split("~");
                 Integer.parseInt(split[1]);
-                System.out.println(Arrays.toString(split));
-                stringList.add(split[0]);
-                stringList.add(split[1]);
-                System.out.println(stringList);
-                System.out.println(stringList.get(1));
-                menu(source);
+                addArray(text, list);
             } catch (Exception e) {
                 System.out.println("Wrong command");
-                break;
             }
+        }
+    }
+    public static void addArray(String text, ArrayList<String> list) {
+        String[] subArray = text.split("~");
+        int num = Integer.parseInt(subArray[1]);
+        int localSize = num - list.size();
+        for (int i = 0; i <= localSize; i++) {
+            list.add(null);
+        }
+        if (subArray[0].equals("print")) {
+            System.out.println(list.get(num));
+        } else {
+            list.set(num, subArray[0]);
         }
     }
 }
