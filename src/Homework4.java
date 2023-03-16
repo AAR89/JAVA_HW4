@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-
+import java.util.*;
 public class Homework4 {
 //"* Реализовать консольное приложение, которое:"
 //"* 1. Принимает от пользователя строку вида text~num"
@@ -22,9 +18,10 @@ public class Homework4 {
     public static void menu(List<String> source) {
         ArrayList<String> list = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        System.out.println("1.Input text in format 'text~num'. \n" +
-                "2.Input 'print~(num)' for output to console. \n" +
-                "3.Input 'exit' to stop the program.");
+        System.out.println("""
+                1.Input text in format 'text~num'.\s
+                2.Input 'print~(num)' for output to console.\s
+                3.Input 'exit' to stop the program.""");
         while (true) {
             String text = sc.nextLine();
             try {
